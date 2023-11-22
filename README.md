@@ -9,7 +9,7 @@
 | Column                | Type     | Options     |
 | ------------------    | ------   | ----------- |
 | nickname              | string   | null: false |
-| email                 | string   | null: false |unique: true
+| email                 | string   | null: false , unique: true |
 | password              | string   | null: false |CHECK (password REGEXP '^(?=.*[a-z])(?=.*[0-9]).{6,}$')
 | password_confirmation | string   | null: false |CHECK (password REGEXP '^(?=.*[a-z])(?=.*[0-9]).{6,}$')
 | first_name            | nvarchar | null: false |
@@ -19,6 +19,10 @@
 | birth_year            | string   | null: false |
 | birth_month           | string   | null: false |
 | birth_day             | string   | null: false |
+
+### Association
+- has_many :products
+- has_many :buyers
 
 
 
@@ -34,7 +38,11 @@
 | origin_region      | string    | null: false |
 | shipping_days      | string    | null: false |
 | price              | integer   | null: false |CHECK (price >= 300 AND price <= 9999999)
-| user_id            | references| null: false |foreign_key: true
+| user               | references| null: false , foreign_key: true |
+
+### Association
+- belongs_to :user
+- has_one :buyer
 
 
 
@@ -42,10 +50,14 @@
 
 | Column             | Type      | Options     |
 | ------------------ | ------    | ----------- |
-| user_id            | references| null: false |foreign_key: true
-| products_id        | references| null: false |foreign_key: true
+| user               | references| null: false |foreign_key: true
+| products           | references| null: false |foreign_key: true
 +----------------------------------------+
 
+### Association
+- belongs_to :user
+- belongs_to :producut
+- has_one :shipment
 
 
 
@@ -59,23 +71,11 @@
 | street_address     | string            | null: false |limit: 8, format: { with: /\A\d{3}-\d{4}\z/ }
 | building_name      | string            | 
 | phone_number       | string            | null: false | limit: 11
-| user_id            | references        | null: false |foreign_key: true
-| products_id        | references        | null: false |foreign_key: true
-| buyers_id          | references        | null: false |foreign_key: true
+| buyer              | references        | null: false |foreign_key: true
 +----------------------------------------+
 
 
 ### Association
-- has_many :product
-- has_many :buyer
-
-- belongs_to :user
-- has_one :buyer
-
-- belongs_to :user
-- belings_to :producut
-- has_one :shipment
-
 - belongs_to :product
 
 
