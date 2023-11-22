@@ -15,8 +15,6 @@
 | last_name             | string   | null: false |
 | first_name_kana       | string   | null: false |
 | last_name_kana        | string   | null: false |
-| birth_year            | date     | null: false |
-| birth_month           | date     | null: false |
 | birth_day             | date     | null: false |
 
 ### Association
@@ -34,8 +32,8 @@
 | category_id        | integer   | null: false |
 | condition_id       | integer   | null: false |
 | shipping_fee_id    | integer   | null: false |
-| prefecture_id_id   | integer   | null: false |
-| shipping_days_id   | integer   | null: false |
+| prefecture_id      | integer   | null: false |
+| shipping_day _id   | integer   | null: false |
 | price              | integer   | null: false |CHECK (price >= 300 AND price <= 9999999)
 | user               | references| null: false , foreign_key: true |
 
