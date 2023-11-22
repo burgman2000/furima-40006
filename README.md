@@ -33,7 +33,7 @@
 | condition_id       | integer   | null: false |
 | shipping_fee_id    | integer   | null: false |
 | prefecture_id      | integer   | null: false |
-| shipping_day _id   | integer   | null: false |
+| shipping_day_id   | integer   | null: false |
 | price              | integer   | null: false |CHECK (price >= 300 AND price <= 9999999)
 | user               | references| null: false , foreign_key: true |
 
@@ -49,7 +49,7 @@
 | Column             | Type      | Options     |
 | ------------------ | ------    | ----------- |
 | user               | references| null: false, foreign_key: true |
-| products           | references| null: false, foreign_key: true |
+| product           | references| null: false, foreign_key: true |
 +----------------------------------------+
 
 ### Association
@@ -74,7 +74,7 @@
 
 
 ### Association
-- belongs_to :product
+- belongs_to :buyer
 
 
 
