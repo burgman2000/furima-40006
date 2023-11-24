@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :nickname, presence: true 
-         validates :first_name, presence: true,  format: { with: /\A[^\p{ASCII}]+\z/, message: 'は全角で入力してください' }
-         validates :last_name, presence: true,  format: { with: /\A[^\p{ASCII}]+\z/, message: 'は全角で入力してください' }
+         validates :nickname, presence: true          
+         validates :first_name, presence: true, format: { with: /\A[\p{Hiragana}\p{Katakana}\p{Han}]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
+         validates :last_name, presence: true,  format:{ with: /\A[\p{Hiragana}\p{Katakana}\p{Han}]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
          validates :first_name_kana, presence: true, format: { with: /\A[\p{Katakana}\p{Blank}ー－]+\z/, message: 'は全角カタカナで入力してください' }
          validates :last_name_kana, presence: true, format: { with: /\A[\p{Katakana}\p{Blank}ー－]+\z/, message: 'は全角カタカナで入力してください' }
          validates :birth_day, presence: true
@@ -15,3 +15,4 @@ class User < ApplicationRecord
          validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
 
 end
+
