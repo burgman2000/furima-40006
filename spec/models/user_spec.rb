@@ -121,13 +121,13 @@ RSpec.describe User, type: :model do
       end
 
       it 'first_name_kanaが空では登録できない' do
-        @user = User.new(first_name_kana: '')
+        @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
 
       it 'last_name_kanaが空では登録できない' do
-        @user = User.new(last_name_kana: '')
+        @user.last_name_kana =  ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
@@ -145,7 +145,7 @@ RSpec.describe User, type: :model do
       end    
 
       it 'birth_dayが空では登録できない' do
-        @user = User.new(birth_day: nil)
+        @user.birth_day = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth day can't be blank")
       end
