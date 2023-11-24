@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          validates :nickname, presence: true          
-         validates :first_name, presence: true, format: { with: /\A[\p{Hiragana}\p{Katakana}\p{Han}]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
-         validates :last_name, presence: true,  format:{ with: /\A[\p{Hiragana}\p{Katakana}\p{Han}]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
+         validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
+         validates :last_name, presence: true,  format:{ with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }
          validates :first_name_kana, presence: true, format: { with: /\A[\p{Katakana}\p{Blank}ー－]+\z/, message: 'は全角カタカナで入力してください' }
          validates :last_name_kana, presence: true, format: { with: /\A[\p{Katakana}\p{Blank}ー－]+\z/, message: 'は全角カタカナで入力してください' }
          validates :birth_day, presence: true
