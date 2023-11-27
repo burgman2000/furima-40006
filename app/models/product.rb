@@ -6,8 +6,10 @@ class Product < ApplicationRecord
   belongs_to :shipping_fee
   belongs_to :prefecture
   belongs_to :shipping_day 
-  
+
+  belongs_to :user
   has_one_attached :image
+
 
   validates :image, presence: true
   validates :product_name, presence: true
