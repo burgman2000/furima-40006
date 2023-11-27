@@ -7,9 +7,9 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @product,  local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    
     <%= render 'shared/error_messages', model: f.object %> 
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -86,6 +86,7 @@
     </div>
     <%# /配送について %>
 
+
     <%# 販売価格 %>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
@@ -99,7 +100,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"半角数字で入力" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
@@ -116,6 +117,8 @@
       </div>
     </div>
     <%# /販売価格 %>
+
+    
 
     <%# 注意書き %>
     <div class="caution">
