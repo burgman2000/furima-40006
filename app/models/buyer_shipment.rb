@@ -1,6 +1,7 @@
 class BuyerShipment
   include ActiveModel::Model
   attr_accessor :user_id, :product_id, :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number
+  attr_accessor :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'は「3桁ハイフン4桁」の半角文字列で入力してください' }
@@ -10,6 +11,7 @@ class BuyerShipment
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください' }
     validates :user_id
     validates :product_id
+    validates :token, presence: true
   end
 
   def save

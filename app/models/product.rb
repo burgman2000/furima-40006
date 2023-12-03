@@ -8,7 +8,9 @@ class Product < ApplicationRecord
   belongs_to :shipping_day 
 
   belongs_to :user
+  has_one :buyer
   has_one_attached :image
+  
 
 
   validates :image, presence: true
