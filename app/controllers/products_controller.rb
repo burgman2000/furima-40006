@@ -35,7 +35,19 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
+    buyer = @product.buyer
+
+  # バイヤーが存在し、かつ関連するシップメントも存在する場合、シップメントを削除
+  if buyer.present? && buyer.shipment.present?
+    buyer.shipment.destroy
+  end
+
+  # バイヤーが存在する場合、バイヤーを削除
+  buyer.destroy if buyer.present?
+
+  # プロダクトを削除
+  @product.destroy
+
     redirect_to root_path    
   end
 
