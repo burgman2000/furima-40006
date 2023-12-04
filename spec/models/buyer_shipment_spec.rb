@@ -14,6 +14,13 @@ RSpec.describe BuyerShipment, type: :model do
         it 'すべての値が正しく入力されていれば保存できること' do
           expect(@buyer_shipment).to be_valid
         end
+
+        it '建物名の記入がなくても登録できること' do
+          @buyer_shipment.building_name = ''
+          expect(@buyer_shipment).to be_valid
+        end
+
+
       end
 
       context '内容に問題がある場合' do

@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one :buyer, dependent: :destroy
   has_one_attached :image
-  has_many :buyers, dependent: :destroy
+  
   
 
 

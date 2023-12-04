@@ -6,7 +6,7 @@ class BuyerShipment
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'は「3桁ハイフン4桁」の半角文字列で入力してください' }
-    validates :prefecture_id, presence: true, numericality: { other_than: 1, message: 'は1以外の値にしてください' }
+    validates :prefecture_id,  numericality: { other_than: 1, message: 'は1以外の値にしてください' }
     validates :city
     validates :street_address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください' }
