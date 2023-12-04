@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :products
+  has_many :buyers
 
          validates :nickname, presence: true          
          validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'はひらがな、カタカナ、漢字のみで入力してください' }

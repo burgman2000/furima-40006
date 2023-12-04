@@ -8,10 +8,10 @@ FactoryBot.define do
     association :user
     product_name { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
+    price { 1000 }
     
-    trait :with_valid_price do
-      price { Faker::Number.between(from: 300, to: 9_999_999) }
-    end
+
+   
 
     after(:build) do |product|
       product.image.attach(io: File.open(Rails.root.join('public/images/test_image.png')), filename: 'test_image.png')

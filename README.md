@@ -54,7 +54,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :producut
+- belongs_to :product
 - has_one :shipment
 
 

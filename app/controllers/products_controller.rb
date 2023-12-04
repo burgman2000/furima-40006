@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show , :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show,]
   before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :check_sold_status, only: [:edit]
   
 
   def index
@@ -35,7 +36,15 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
+    buyer = @product.buyer
+
+  
+  if buyer.present? && buyer.shipment.present?
+    buyer.shipment.destroy
+  end
+ 
+  buyer.destroy if buyer.present? 
+  @product.destroy
     redirect_to root_path    
   end
 
@@ -61,6 +70,12 @@ class ProductsController < ApplicationController
     unless  current_user.id == @product.user_id
       flash[:alert] = '他のユーザーの商品は編集できません。'
       redirect_to root_path
+    end
+  end
+
+  def check_sold_status
+    if @product.buyer.present?
+      redirect_to root_path, alert: "売却済みの商品です。"
     end
   end
 
