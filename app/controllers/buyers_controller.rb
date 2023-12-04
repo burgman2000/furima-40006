@@ -5,6 +5,7 @@ class BuyersController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @buyer_shipment = BuyerShipment.new
+    redirect_if_invalid_access
   end
 
   def create
@@ -38,4 +39,12 @@ class BuyersController < ApplicationController
       )
     
   end
+
+  def redirect_if_invalid_access
+    if current_user.id == @product.user_id || @product.sold_out?
+      redirect_to root_path, alert: "You cannot access this page."
+    end
+  end
+
+
 end
