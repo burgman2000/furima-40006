@@ -31,13 +31,13 @@
       <% if current_user.id == @product.user_id %>
 
         <% if !@product.sold_out? %>
-          <%= link_to "商品の編集", edit_product_path(@product), class: "item-red-btn" %>
+          <%= link_to "商品の編集", edit_product_path(@product),data: { turbo: false }, class: "item-red-btn" %>
             <p class="or-text">or</p>
           <%= link_to "削除", product_path(@product), data: { turbo_method: :delete }, class: "item-destroy" %>
         <% end %>
 
       <% elsif !@product.sold_out? %>
-      <%= link_to "購入画面に進む", product_buyers_path(@product), class: "item-red-btn" %>
+      <%= link_to "購入画面に進む", product_buyers_path(@product),data: { turbo: false },  class: "item-red-btn" %>
       <% end %>
 
     <% end %> 
