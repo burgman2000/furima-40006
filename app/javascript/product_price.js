@@ -2,6 +2,7 @@ window.addEventListener('turbo:load', () => {
   const priceInput = document.getElementById("item-price");
   const addTaxPriceElement = document.getElementById('add-tax-price');
   const profitElement = document.getElementById('profit');
+  
 
   priceInput.addEventListener("input", () => {
     updateDisplay();
@@ -41,6 +42,7 @@ window.addEventListener('turbo:load', () => {
     addTaxPriceElement.textContent = '';
     profitElement.textContent = '';
   }
+
 
   // 初回表示
   updateDisplay();
